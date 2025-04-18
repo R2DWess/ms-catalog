@@ -18,8 +18,6 @@ Microsserviço responsável por interagir com a [Fake Store API](https://fakesto
 ### 🖥️ **Rodar Localmente**
 Para executar o projeto localmente:
 
-> ⚡ Este projeto **não possui banco de dados**, pois é uma integração direta com a Fake Store API.
-
 ```sh
 ./gradlew bootRun
 ```
