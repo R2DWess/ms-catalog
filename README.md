@@ -1,4 +1,4 @@
-## PROJETO PESSOAL - MICROSSERVIÇO  📚:
+## PROJETO PESSOAL - MS-CATALOG 📚:
 
 #### 📖 Descrição:
 
