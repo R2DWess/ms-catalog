@@ -78,18 +78,3 @@ curl --request GET \
     </td>
   </tr>
 </table>
-
-
-
-<table>
-  <tr>
-    <td align="center">
-      <a href="https://www.linkedin.com/in/wesley-lima-244405251/" title="Wesley Lima">
-        <img src="https://media.licdn.com/dms/image/v2/D4D03AQEVAsL2UL6A0w/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1721323972268?e=1746662400&v=beta&t=4_2RDPgz5FqJ2G-yRQk3y0vWMVRpSeAPKMAO7IOFXeE" width="100px;" alt="Foto do Wesley Lima"/><br>
-        <sub>
-          <b>Wesley Lima</b>
-        </sub>
-      </a>
-    </td>
-  </tr>
-</table>
