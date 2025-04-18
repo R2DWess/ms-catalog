@@ -1,4 +1,4 @@
-## PROJETO PESSOAL - MS-CATALOG 📚:
+## PROJETO PESSOAL - MS-CATALOGO 📚:
 
 #### 📖 Descrição:
 
