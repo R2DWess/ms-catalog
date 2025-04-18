@@ -32,12 +32,19 @@ public class FakeStoreServiceImpl implements FakeStoreService {
     }
 
     @Override
-    public Mono<ProdutoDTO> buscarProdutoPorCategoria(String category) {
+    public Flux<ProdutoDTO> buscarProdutoPorCategoria(String category) {
         return fakeStoreWebClient.get()
-                .uri(uriBuilder -> uriBuilder.path("/products")
-                        .queryParam("category", category)
-                        .build())
+                .uri("/products/category/{category}", category)
                 .retrieve()
-                .bodyToMono(ProdutoDTO.class);
+                .bodyToFlux(ProdutoDTO.class);
+    }
+
+    @Override
+    public Flux<ProdutoDTO> buscarProdutoPorTitulo(String title) {
+        return fakeStoreWebClient.get()
+                .uri("/products")
+                .retrieve()
+                .bodyToFlux(ProdutoDTO.class)
+                .filter(product -> product.getTitle().toLowerCase().contains(title.toLowerCase()));
     }
 }

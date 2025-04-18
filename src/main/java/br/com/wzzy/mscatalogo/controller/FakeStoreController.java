@@ -2,11 +2,7 @@ package br.com.wzzy.mscatalogo.controller;
 
 import br.com.wzzy.mscatalogo.model.dto.ProdutoDTO;
 import br.com.wzzy.mscatalogo.service.FakeStoreService;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -25,17 +21,17 @@ public class FakeStoreController {
         return fakeStoreService.listarProdutos();
     }
 
-    @GetMapping("/listar-id/{id}")
-    public Mono<ResponseEntity<ProdutoDTO>> buscarProdutoPorId(@PathVariable int id) {
-        return fakeStoreService.buscarProdutoPorId(id)
-                .map(ResponseEntity::ok)
-                .defaultIfEmpty(ResponseEntity.notFound().build());
+    @GetMapping("/id/{id}")
+    public Mono<ProdutoDTO> buscarProdutoPorId(@PathVariable int id) {
+        return fakeStoreService.buscarProdutoPorId(id);
+    }
+    @GetMapping("/categoria/{category}")
+    public Flux<ProdutoDTO> buscarProdutoPorCategoria(@PathVariable String category) {
+        return fakeStoreService.buscarProdutoPorCategoria(category);
     }
 
-    @GetMapping("/listar-categoria/{category}")
-    public Mono<ResponseEntity<ProdutoDTO>> buscarProdutoPorCategoria(@PathVariable String category) {
-        return fakeStoreService.buscarProdutoPorCategoria(category)
-                .map(ResponseEntity::ok)
-                .defaultIfEmpty(ResponseEntity.notFound().build());
+    @GetMapping("/titulo")
+    public Flux<ProdutoDTO> buscarProdutoPorTitulo(@RequestParam String title) {
+        return fakeStoreService.buscarProdutoPorTitulo(title);
     }
 }

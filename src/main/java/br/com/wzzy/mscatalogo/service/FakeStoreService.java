@@ -10,5 +10,7 @@ public interface FakeStoreService {
 
     Mono<ProdutoDTO> buscarProdutoPorId(int id);
 
-    Mono<ProdutoDTO> buscarProdutoPorCategoria(String category);
+    Flux<ProdutoDTO> buscarProdutoPorCategoria(String category);
+
+    Flux<ProdutoDTO> buscarProdutoPorTitulo(String title);
 }
