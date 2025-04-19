@@ -22,7 +22,7 @@ public class ProdutoMapper {
         return modelMapper.map(requestDTO, ProdutoEntity.class);
     }
 
-    public ProdutoResponseDTO converterEntidadeParaResponseDTO(ProdutoEntity entidade) {
+    public ProdutoResponseDTO converterEntidadeParaProdutoResponseDTO(ProdutoEntity entidade) {
         return modelMapper.map(entidade, ProdutoResponseDTO.class);
     }
 }

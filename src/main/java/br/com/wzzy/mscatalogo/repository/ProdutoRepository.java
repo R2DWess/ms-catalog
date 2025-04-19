@@ -5,5 +5,4 @@ import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import reactor.core.publisher.Flux;
 
 public interface ProdutoRepository extends ReactiveCrudRepository<ProdutoEntity, Long> {
-    Flux<ProdutoEntity> findByCategoria(String categoria);
 }
