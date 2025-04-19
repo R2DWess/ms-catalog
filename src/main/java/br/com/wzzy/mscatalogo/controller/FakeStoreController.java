@@ -16,6 +16,11 @@ public class FakeStoreController {
         this.fakeStoreService = fakeStoreService;
     }
 
+    @PostMapping("/importar")
+    public Flux<ProdutoEntity> importarProdutos() {
+        return fakeStoreService.importarProdutos();
+    }
+
     @GetMapping
     public Flux<ProdutoEntity> listarProdutos() {
         return fakeStoreService.listarProdutos();
