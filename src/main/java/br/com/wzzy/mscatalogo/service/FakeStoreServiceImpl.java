@@ -2,7 +2,7 @@ package br.com.wzzy.mscatalogo.service;
 
 import br.com.wzzy.mscatalogo.mapper.ProdutoMapper;
 import br.com.wzzy.mscatalogo.model.dto.CatalogoProdutoDTO;
-import br.com.wzzy.mscatalogo.model.dto.ProdutoEntity;
+import br.com.wzzy.mscatalogo.model.dto.ProdutoResponseDTO;
 import br.com.wzzy.mscatalogo.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,45 +25,54 @@ public class FakeStoreServiceImpl implements FakeStoreService {
     }
 
     @Override
-    public Flux<ProdutoEntity> importarProdutos() {
+    public Flux<ProdutoResponseDTO> importarProdutos() {
         return fakeStoreWebClient.get()
                 .uri("/products")
                 .retrieve()
                 .bodyToFlux(CatalogoProdutoDTO.class)
                 .map(produtoMapper::converterCatalogoProdutoDTOParaEntidade)
-                .flatMap(produtoRepository::save);
+                .flatMap(produtoRepository::save)
+                .map(produtoMapper::converterEntidadeParaProdutoResponseDTO);
     }
 
     @Override
-    public Flux<ProdutoEntity> listarProdutos() {
+    public Flux<ProdutoResponseDTO> listarProdutos() {
         return fakeStoreWebClient.get()
                 .uri("/products")
                 .retrieve()
-                .bodyToFlux(ProdutoEntity.class);
+                .bodyToFlux(CatalogoProdutoDTO.class)
+                .map(produtoMapper::converterCatalogoProdutoDTOParaEntidade)
+                .map(produtoMapper::converterEntidadeParaProdutoResponseDTO);
     }
 
     @Override
-    public Mono<ProdutoEntity> buscarProdutoPorId(int id) {
+    public Mono<ProdutoResponseDTO> buscarProdutoPorId(int id) {
         return fakeStoreWebClient.get()
                 .uri("/products/{id}", id)
                 .retrieve()
-                .bodyToMono(ProdutoEntity.class);
+                .bodyToMono(CatalogoProdutoDTO.class)
+                .map(produtoMapper::converterCatalogoProdutoDTOParaEntidade)
+                .map(produtoMapper::converterEntidadeParaProdutoResponseDTO);
     }
 
     @Override
-    public Flux<ProdutoEntity> buscarProdutoPorCategoria(String category) {
+    public Flux<ProdutoResponseDTO> buscarProdutoPorCategoria(String category) {
         return fakeStoreWebClient.get()
                 .uri("/products/category/{category}", category)
                 .retrieve()
-                .bodyToFlux(ProdutoEntity.class);
+                .bodyToFlux(CatalogoProdutoDTO.class)
+                .map(produtoMapper::converterCatalogoProdutoDTOParaEntidade)
+                .map(produtoMapper::converterEntidadeParaProdutoResponseDTO);
     }
 
     @Override
-    public Flux<ProdutoEntity> buscarProdutoPorTitulo(String title) {
+    public Flux<ProdutoResponseDTO> buscarProdutoPorTitulo(String title) {
         return fakeStoreWebClient.get()
                 .uri("/products")
                 .retrieve()
-                .bodyToFlux(ProdutoEntity.class)
-                .filter(product -> product.getTitle().toLowerCase().contains(title.toLowerCase()));
+                .bodyToFlux(CatalogoProdutoDTO.class)
+                .map(produtoMapper::converterCatalogoProdutoDTOParaEntidade)
+                .filter(produto -> produto.getTitle().toLowerCase().contains(title.toLowerCase()))
+                .map(produtoMapper::converterEntidadeParaProdutoResponseDTO);
     }
 }
