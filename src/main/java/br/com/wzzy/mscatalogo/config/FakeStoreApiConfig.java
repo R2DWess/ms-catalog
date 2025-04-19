@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
-public class StoreApiConfig {
+public class FakeStoreApiConfig {
 
     @Value("${fakestore.api.url}")
     private String baseUrl;

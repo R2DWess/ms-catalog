@@ -1,6 +1,6 @@
 package br.com.wzzy.mscatalogo.controller;
 
-import br.com.wzzy.mscatalogo.model.dto.ProdutoDTO;
+import br.com.wzzy.mscatalogo.model.dto.ProdutoEntity;
 import br.com.wzzy.mscatalogo.service.FakeStoreService;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -17,21 +17,21 @@ public class FakeStoreController {
     }
 
     @GetMapping
-    public Flux<ProdutoDTO> listarProdutos() {
+    public Flux<ProdutoEntity> listarProdutos() {
         return fakeStoreService.listarProdutos();
     }
 
     @GetMapping("/id/{id}")
-    public Mono<ProdutoDTO> buscarProdutoPorId(@PathVariable int id) {
+    public Mono<ProdutoEntity> buscarProdutoPorId(@PathVariable int id) {
         return fakeStoreService.buscarProdutoPorId(id);
     }
     @GetMapping("/categoria/{category}")
-    public Flux<ProdutoDTO> buscarProdutoPorCategoria(@PathVariable String category) {
+    public Flux<ProdutoEntity> buscarProdutoPorCategoria(@PathVariable String category) {
         return fakeStoreService.buscarProdutoPorCategoria(category);
     }
 
     @GetMapping("/titulo")
-    public Flux<ProdutoDTO> buscarProdutoPorTitulo(@RequestParam String title) {
+    public Flux<ProdutoEntity> buscarProdutoPorTitulo(@RequestParam String title) {
         return fakeStoreService.buscarProdutoPorTitulo(title);
     }
 }
