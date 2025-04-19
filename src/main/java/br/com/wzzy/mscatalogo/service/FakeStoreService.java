@@ -1,16 +1,18 @@
 package br.com.wzzy.mscatalogo.service;
 
-import br.com.wzzy.mscatalogo.model.dto.ProdutoDTO;
+import br.com.wzzy.mscatalogo.model.dto.ProdutoEntity;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface FakeStoreService {
 
-    Flux<ProdutoDTO> listarProdutos();
+    Flux<ProdutoEntity> importarProdutos();
 
-    Mono<ProdutoDTO> buscarProdutoPorId(int id);
+    Flux<ProdutoEntity> listarProdutos();
 
-    Flux<ProdutoDTO> buscarProdutoPorCategoria(String category);
+    Mono<ProdutoEntity> buscarProdutoPorId(int id);
 
-    Flux<ProdutoDTO> buscarProdutoPorTitulo(String title);
+    Flux<ProdutoEntity> buscarProdutoPorCategoria(String category);
+
+    Flux<ProdutoEntity> buscarProdutoPorTitulo(String title);
 }
