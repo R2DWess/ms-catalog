@@ -2,7 +2,6 @@ package br.com.wzzy.mscatalogo.service;
 
 import br.com.wzzy.mscatalogo.mapper.ProdutoMapper;
 import br.com.wzzy.mscatalogo.model.dto.CatalogoProdutoDTO;
-import br.com.wzzy.mscatalogo.model.dto.ProdutoEntity;
 import br.com.wzzy.mscatalogo.model.dto.ProdutoResponseDTO;
 import br.com.wzzy.mscatalogo.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
