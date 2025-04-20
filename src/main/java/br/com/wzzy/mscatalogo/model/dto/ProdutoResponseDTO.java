@@ -1,10 +1,12 @@
 package br.com.wzzy.mscatalogo.model.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class ProdutoResponseDTO {
 
     private int id;

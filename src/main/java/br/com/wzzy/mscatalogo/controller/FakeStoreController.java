@@ -1,6 +1,5 @@
 package br.com.wzzy.mscatalogo.controller;
 
-import br.com.wzzy.mscatalogo.model.dto.ProdutoRequestDTO;
 import br.com.wzzy.mscatalogo.model.dto.ProdutoResponseDTO;
 import br.com.wzzy.mscatalogo.service.FakeStoreService;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +14,6 @@ public class FakeStoreController {
 
     public FakeStoreController(FakeStoreService fakeStoreService) {
         this.fakeStoreService = fakeStoreService;
-    }
-
-    @PostMapping("/importar")
-    public Flux<ProdutoResponseDTO> importarProdutos() {
-        return fakeStoreService.importarProdutos();
     }
 
     @GetMapping

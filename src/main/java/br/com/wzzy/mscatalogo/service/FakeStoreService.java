@@ -6,8 +6,6 @@ import reactor.core.publisher.Mono;
 
 public interface FakeStoreService {
 
-    Flux<ProdutoResponseDTO> importarProdutos();
-
     Flux<ProdutoResponseDTO> listarProdutos();
 
     Mono<ProdutoResponseDTO> buscarProdutoPorId(int id);
