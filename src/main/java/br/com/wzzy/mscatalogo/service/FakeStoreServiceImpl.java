@@ -4,7 +4,6 @@ import br.com.wzzy.mscatalogo.mapper.ProdutoMapper;
 import br.com.wzzy.mscatalogo.model.dto.CatalogoProdutoDTO;
 import br.com.wzzy.mscatalogo.model.dto.ProdutoResponseDTO;
 import br.com.wzzy.mscatalogo.repository.ProdutoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
@@ -17,7 +16,6 @@ public class FakeStoreServiceImpl implements FakeStoreService {
     private final ProdutoRepository produtoRepository;
     private final ProdutoMapper produtoMapper;
 
-    @Autowired
     public FakeStoreServiceImpl(WebClient fakeStoreWebClient, ProdutoRepository produtoRepository, ProdutoMapper produtoMapper) {
         this.fakeStoreWebClient = fakeStoreWebClient;
         this.produtoRepository = produtoRepository;
