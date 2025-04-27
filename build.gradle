@@ -36,10 +36,14 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation 'io.r2dbc:r2dbc-postgresql:0.8.13.RELEASE'
-
+	testImplementation 'io.projectreactor:reactor-test'
+	testImplementation 'org.mockito:mockito-core:5.5.0'
+	testRuntimeOnly 'net.bytebuddy:byte-buddy-agent:1.15.11'
 }
 
 
 tasks.named('test') {
+	jvmArgs += "-javaagent:${configurations.testRuntimeClasspath.find { it.name.contains('byte-buddy-agent') }}"
+
 	useJUnitPlatform()
 }
